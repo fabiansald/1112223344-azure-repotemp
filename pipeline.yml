@@ -2,6 +2,8 @@ name: $(Date:yyyyMMdd)$(Rev:.r)
 variables:
   var1: value1
 jobs:
-- job: One
+- job: Linux-job1
+  pool:
+    vmImage: 'ubuntu-latest'
   steps:
   - script: echo "Hello Azure Pipelines team!"
