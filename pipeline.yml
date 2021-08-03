@@ -2,7 +2,7 @@ name: $(Date:yyyyMMdd)$(Rev:.r)
 variables:
   var1: value1
 jobs:
-- job: Linux-job1
+- job: Linuxjob1
   pool:
     vmImage: 'ubuntu-latest'
   steps:
