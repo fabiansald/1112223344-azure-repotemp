@@ -1,4 +1,5 @@
 name: $(Date:yyyyMMdd)$(Rev:.r)
+
 variables:
   var1: value1
 jobs:
@@ -7,3 +8,15 @@ jobs:
     vmImage: 'ubuntu-latest'
   steps:
   - script: echo "Hello Azure Pipelines team!"
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: './'
+      includeRootFolder: false
+      archiveType: 'zip'
+      archiveFile: './$(Build.BuildId).zip'
+      replaceExistingArchive: true
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: './$(Build.BuildId).zip'
+      ArtifactName: 'tf-$(Build.BuildId)'
+      publishLocation: 'Container'
